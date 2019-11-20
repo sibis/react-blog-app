@@ -22,7 +22,10 @@ html, body, #app, #root, .app-wrapper, .MuiGrid-container {
   // background-image: linear-gradient(#0B566C,#A3D1A7);
 }
 
-div.mainContent, div.blogContent{
+// div.mainContent, div.blogContent{
+//   height: 100%;
+// }
+div.mainContent{
   height: 100%;
 }
 
@@ -43,6 +46,25 @@ div.mainContent, div.blogContent{
   width: 40%;
   /* margin-top: 3%!important; */
   margin-top: 2em!important;
+}
+
+button.leftButton{
+  left: -2%;
+}
+
+span.currentPage{
+  font-size: 25px;
+}
+
+span.emptyData {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+button.rightButton {
+  right: -2%;
 }
 
 div.social-item {
@@ -109,6 +131,21 @@ div.form-item input {
    border-left: 4px solid red;
 }
 
+div.searchField{
+  width: 80%;
+  left:10%;
+}
+
+div.searchField input {
+  border-left: 0px solid red!important;
+}
+
+div.footerLists {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 div.logo {
   font-size: 25px;
   color: #504e4e;
@@ -144,6 +181,7 @@ div.css-1ioq6a {
 span.footerBlog button.deleteButton{
   float:left!important;
 }
+
 `;
 
 export default GlobalStyle;
