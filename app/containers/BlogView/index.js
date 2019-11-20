@@ -136,7 +136,7 @@ const BlogView = (props) => {
                         style={{ margin: 8 }}
                         disabled={contentDisabled}
                         placeholder="Title"
-                        helperText="Title for your blog!"
+                        helperText="Micro title (200 characters max)"
                         fullWidth
                         margin="normal"
                         value={headerContent}
@@ -149,8 +149,8 @@ const BlogView = (props) => {
                         multiline
                         disabled={contentDisabled}
                         style={{ margin: 8 }}
-                        placeholder="Blog content"
-                        helperText="content for your blog!"
+                        placeholder="Content"
+                        helperText="Micro content (1000 characters max)"
                         fullWidth
                         margin="normal"
                         value={blogContent}

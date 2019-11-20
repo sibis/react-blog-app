@@ -8,32 +8,28 @@ import  {RootContext}  from "utils/auth";
 
 import { css } from '@emotion/core';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { SIGNUP_URL } from "utils/constants";
 
 const SignupPage = (props) => {
 
-    //const { setAuthTokens } = useAuth();
-    // const [authTokens, setAuthTokens] = useState();
-    const userAuth = useContext(RootContext);
-    let loading = false
+     const userAuth = useContext(RootContext);
+     let loading = false;
      const [username, setUsername] = useState('');
      const [password1, setPassword1] = useState('');
      const [password2, setPassword2] = useState('');
      const [email, setEmail] = useState('');
      let history = useHistory();
      const submitdata = () => {
-
-        userAuth.setloader(true)
+        userAuth.setloader(true);
         if ((username)&& (email) && (password1) && (password2)){
             if((password1) !== (password2)){
-                userAuth.setloader(true)
-                userAuth.setsnackopen([true,"Passwords are not matching. Try again!"])
-                setTimeout(function(){ userAuth.setsnackopen([false,'']) }, 3000);
-                return
+                userAuth.setloader(true);
+                userAuth.setsnackopen([true,"Passwords are not matching. Try again!"]);
+                setTimeout(function(){ userAuth.setsnackopen([false,'']); }, 3000);
+                return;
             }
-            let data = {"name":username,"email":email, "password":password1}
-            const api_url = "https://api-modistabox-app.herokuapp.com/api-auth/signup/"
-            //const api_url = "http://localhost:8000/api-auth/signup/"
-            fetch(api_url, {
+            let data = {"name":username,"email":email, "password":password1};
+            fetch(SIGNUP_URL, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -54,16 +50,16 @@ const SignupPage = (props) => {
                 }
             })
             .catch(error => {
-                userAuth.setloader(false)
-            })
+                userAuth.setloader(false);
+            });
         } else {
-            userAuth.setloader(false)
-            userAuth.setsnackopen([true,'Please fill all the details!'])
-            setTimeout(function(){ userAuth.setsnackopen([false,'']) }, 3000);
+            userAuth.setloader(false);
+            userAuth.setsnackopen([true,'Please fill all the details!']);
+            setTimeout(function(){ userAuth.setsnackopen([false,'']); }, 3000);
         }
         //userAuth.setAuthenticated("true")
         //history.replace("/")
-     }
+     };
 
      var classNames = require('classnames');
      var btnClass = classNames({
@@ -80,7 +76,7 @@ const SignupPage = (props) => {
                 justify="center"
                 alignItems="center" 
             >
-            <div className="logo">Modistabox Blog</div>
+            <div className="logo">Microblog</div>
             <TextField
                 id="outlined-dense-multiline"
                 className="form-item"

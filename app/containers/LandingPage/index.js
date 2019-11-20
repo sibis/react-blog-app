@@ -56,6 +56,7 @@ export default function LandingPage() {
             userAuth.setAuthenticated("false");
             history.replace('/login');
             userAuth.setsnackopen([true,data.msg]);
+            setTimeout(function(){ userAuth.setsnackopen([false,'']) }, 3000);
         }
     })
     .catch(error => {

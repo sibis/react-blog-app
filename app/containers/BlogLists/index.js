@@ -5,7 +5,8 @@ import {
   Route,
   Link,
   useParams,
-  useRouteMatch
+  useRouteMatch,
+  useHistory
 } from "react-router-dom";
 import {BLOG_LIST_URL} from 'utils/constants';
 import { Button, TextField } from '@material-ui/core';
@@ -21,6 +22,7 @@ import BlogList from 'components/BlogList';
   const [search,setsearch] = useState("");
 
   const userAuth = useContext(RootContext);
+  let history = useHistory();
   const fetchBlogs = () => {
       let data = {
           "page": page,
@@ -35,8 +37,17 @@ import BlogList from 'components/BlogList';
         },
         body: JSON.stringify(data)
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log(response)
+            if (response.status === 401) {
+                userAuth.setloader(false);
+                userAuth.setAuthenticated("false");
+                history.replace('/login');
+            }
+            return response.json()
+        })
         .then(data => {
+            console.log(data.status)
             userAuth.setloader(false);
             setresult(data.data);
             setnext(data.has_next);
@@ -68,7 +79,7 @@ import BlogList from 'components/BlogList';
         <div className="blogContent">  
         { result.length > 0 ? 
             result.map((data, index) => (
-                    <BlogList key={data.id} id={data.id} name={data.created_by.name} createdon={data.created_on} createdby={data.created_by.email}  title={data.title} content={data.content}/>
+                    <BlogList key={data.id} id={data.id} name={data.created_by.name} createdon={data.created_on}  title={data.title} content={data.content}/>
             ))
         : <span className="emptyData">No data available</span>
         }     

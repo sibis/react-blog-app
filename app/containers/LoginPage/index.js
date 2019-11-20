@@ -40,11 +40,11 @@ const LoginPage = () => {
                     history.replace('/');
                 } else if(data.error) {
                     userAuth.setsnackopen([true,data.error]);
+                    setTimeout(function(){ userAuth.setsnackopen([false,'']); }, 3000);
                 }
             })
             .catch(error => {
                 userAuth.setloader(false);
-                console.error(error);
             })
         } else {
             userAuth.setloader(false);
@@ -60,7 +60,7 @@ const LoginPage = () => {
                 justify="center"
                 alignItems="center" 
             >
-            <div className="logo">Modistabox Blog</div>
+            <div className="logo">Microblog</div>
             <TextField
                 id="outlined-dense-multiline"
                 className="form-item"

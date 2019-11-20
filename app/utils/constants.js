@@ -5,6 +5,7 @@ export const BASE_URL = "http://localhost:8000/";
 export const BLOG_LIST_URL = BASE_URL+"blog/list/";
 export const LOGIN_URL = BASE_URL+"api-auth/login/";
 export const LOGOUT_URL = BASE_URL+"api-auth/logout/";
+export const SIGNUP_URL = BASE_URL+"api-auth/signup/";
 export const BLOG_VIEW_URL = BASE_URL+"blog/view/";
 export const BLOG_CREATE_URL = BASE_URL+"blog/create/";
 export const BLOG_UPDATE_URL = BASE_URL+"blog/update/";

@@ -144,6 +144,7 @@ div.footerLists {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  padding-bottom: 40px!important;
 }
 
 div.logo {
